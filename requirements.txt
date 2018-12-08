@@ -1,3 +1,4 @@
 Pillow
 ptpython
 pandas
+requests
