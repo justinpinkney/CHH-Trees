@@ -6,11 +6,12 @@ data/raw :
 	cp /media/nas/CHH-Trees/via_region_data.json data/raw/via_region_data.json
 	cp -r /media/nas/CHH-Trees/images/ data/raw
 
-keeping_track.csv : data/raw venv parse_data.py
+keeping_track.csv : data/raw venv parse_data.py check_photo_times.py
 	venv/bin/python parse_data.py
 
 clean :
 	rm -rf data/raw
+	rm keeping_track.csv
 
 venv : venv/bin/activate
 venv/bin/activate : requirements.txt

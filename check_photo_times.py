@@ -7,6 +7,7 @@ import os
 def get_all_creation_times(directory):
     times = []
     files = glob.glob(directory + "/*.jpg")
+    files.extend(glob.glob(directory + "/*.JPG"))
     for im_file in files:
         created_time = get_creation_time(im_file)
         times.append({"filename": os.path.basename(im_file),

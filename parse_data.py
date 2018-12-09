@@ -21,6 +21,7 @@ for key, item in label_data.items():
 label_df = pd.DataFrame(label_list).set_index("filename")
 
 taken_data = util.get_all_creation_times(images)
+#print(len(taken_data))
 taken_df = pd.DataFrame(taken_data).set_index("filename")
 
 db = label_df.join(taken_df)
