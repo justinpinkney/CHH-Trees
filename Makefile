@@ -6,6 +6,9 @@ data/raw :
 	cp /media/nas/CHH-Trees/via_region_data.json data/raw/via_region_data.json
 	cp -r /media/nas/CHH-Trees/images/ data/raw
 
+data/processed : data/raw venv
+	venv/bin/python fetch_eol.py
+
 keeping_track.csv : data/raw venv parse_data.py check_photo_times.py
 	venv/bin/python parse_data.py
 
