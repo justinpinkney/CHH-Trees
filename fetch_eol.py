@@ -45,7 +45,7 @@ def download_eol(query, destination='', max_items=None):
         image = imnet.core.Image(f"{idx}", url)
         try:
             imnet.core.save_image(image, destination)
-        except ValueError:
+        except (requests.exceptions.RequestException, ValueError):
             print("bad url, TODO use eol url")
 
         print(idx)
