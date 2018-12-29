@@ -3,7 +3,7 @@
 data/raw :
 	mkdir -p data/raw/
 	cp /media/nas/CHH-Trees/trees.csv data/raw/trees.csv
-	cp /media/nas/CHH-Trees/via_region_data.json data/raw/via_region_data.json
+	cp /media/nas/CHH-Trees/labels.csv data/raw/labels.csv
 	cp -r /media/nas/CHH-Trees/images/ data/raw
 
 data/processed : data/raw venv fetch_eol.py

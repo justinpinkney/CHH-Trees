@@ -5,20 +5,11 @@ import pandas as pd
 
 import check_photo_times as util
 
-labels = "data/raw/via_region_data.json"
+labels = "data/raw/labels.csv"
 trees = "data/raw/trees.csv"
 images = "data/raw/images"
 
-with open(labels) as label_file:
-    label_data = json.loads(label_file.read())
-
-label_list = []
-for key, item in label_data.items():
-    label_list.append({'filename': item['filename'],
-                        'tree_id': int(item['file_attributes']['tree_id']),
-                        })
-
-label_df = pd.DataFrame(label_list).set_index("filename")
+label_df = pd.read_csv(labels).set_index("filename")
 
 taken_data = util.get_all_creation_times(images)
 #print(len(taken_data))
