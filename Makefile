@@ -6,8 +6,8 @@ data/raw :
 	cp /media/nas/CHH-Trees/labels.csv data/raw/labels.csv
 	cp -r /media/nas/CHH-Trees/images/ data/raw
 
-data/processed : data/raw venv fetch_eol.py
-	venv/bin/python fetch_eol.py
+data/processed : data/raw venv trees/eol.py
+	venv/bin/python trees/eol.py
 
 keeping_track.csv : data/raw venv parse_data.py check_photo_times.py
 	venv/bin/python parse_data.py
