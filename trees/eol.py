@@ -2,7 +2,10 @@ import requests
 import os
 import json
 import csv
+
 import imagenet_utils as imnet
+
+from . import data
 
 def get_images(eol_id):
     """Return a generator of urls corresponding to an id."""
@@ -38,16 +41,13 @@ def search(query):
     return response["results"][0]["id"]
 
 def download(query, destination='', max_items=None):
+    """Download images associated with query."""
     destination = os.path.join(destination, query)
     eol_id = search(query)
     urls = []
     for idx, url in enumerate(get_images(eol_id)):
-        image = imnet.core.Image(f"{idx}", url)
-        try:
-            imnet.core.save_image(image, destination)
-        except (requests.exceptions.RequestException, ValueError):
-            print("bad url, TODO use eol url")
-
+        filepath = os.path.join(destination, str(idx))
+        data.download_image(url, filepath)
         print(idx)
         if max_items and idx >= max_items:
             break

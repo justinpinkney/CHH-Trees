@@ -1,5 +1,8 @@
 .DEFAULT_GOAL := keeping_track.csv
 
+data/train :
+	python scripts/get_training_urls.py
+
 data/raw :
 	mkdir -p data/raw/
 	cp /media/nas/CHH-Trees/trees.csv data/raw/trees.csv
@@ -15,6 +18,7 @@ keeping_track.csv : data/raw venv parse_data.py check_photo_times.py
 clean :
 	rm -rf data/raw
 	rm -rf data/processed
+	rm -rf data/train
 	rm keeping_track.csv
 
 venv : venv/bin/activate
