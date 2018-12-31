@@ -1,3 +1,4 @@
+-e .
 absl-py==0.6.1
 astor==0.7.1
 backcall==0.1.0
@@ -71,7 +72,6 @@ torchvision==0.2.1
 tornado==5.1.1
 tqdm==4.28.1
 traitlets==4.3.2
--e git+https://github.com/justinpinkney/CHH-Trees.git@cf2f626348115439ee7c77f4c5ccb7f78b46005e#egg=trees
 urllib3==1.24.1
 wcwidth==0.1.7
 webencodings==0.5.1
