@@ -17,7 +17,7 @@ clean :
 	rm -rf data/raw
 	rm -rf data/processed
 	rm -rf data/train
-	rm keeping_track.csv
+	rm -f keeping_track.csv
 
 venv : venv/bin/activate
 venv/bin/activate : requirements.txt
