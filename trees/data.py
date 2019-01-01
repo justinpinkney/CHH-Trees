@@ -1,6 +1,9 @@
 import csv
 import re
 from pathlib import Path
+import traceback
+
+import requests
 import imagenet_utils as imnet
 
 from trees import eol
@@ -44,8 +47,10 @@ def download_image(url, filepath):
     image = imnet.core.Image(filepath.name, url)
     try:
         imnet.core.save_image(image, filepath.parent)
+        return True
     except (requests.exceptions.RequestException, ValueError):
-        pass
+        print(traceback.format_exc())
+        return False
 
     
 def get_imagenet_urls(terms):

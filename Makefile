@@ -1,8 +1,11 @@
 .DEFAULT_GOAL := keeping_track.csv
 
-data/train : data/raw venv
+train_sources : data/raw venv scripts/get_training_urls.py
 	mkdir -p data/train/
 	python scripts/get_training_urls.py
+
+data/train/images : train_sources scripts/get_training_images.py
+	python scripts/get_training_images.py
 
 data/raw :
 	mkdir -p data/raw/
