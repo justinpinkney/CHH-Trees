@@ -9,14 +9,19 @@ print(len(labels))
 for label in labels:
     print(f"Loading label file for {label}")
     label_file = f'data/train/{label}.txt'
-    with open(label_file, 'rt') as f:
+    with open(label_file, 'rt', encoding='utf-8') as f:
         urls = f.readlines()
 
     success = 0
     total = len(urls)
     print(f"Attempting to download {total} images for {label}")
     label_directory = Path('data', 'train', 'images', label)
-    label_directory.mkdir(parents=True, exist_ok=True)
+    try:
+        label_directory.mkdir(parents=True)
+    except FileExistsError:
+        print("Already exists")
+        continue
+
     for idx, url in enumerate(tqdm(urls)):
         filepath = Path(label_directory, f'{idx:06d}')
         result = data.download_image(url, filepath)
