@@ -17,7 +17,7 @@ h5py==2.8.0
 idna==2.7
 -e git+https://github.com/justinpinkney/imagenet-utils.git@5725e40e676d5f47265a195f168c0c5e44af71e5#egg=imagenet_utils
 ipykernel==5.1.0
-ipython==7.2.0
+ipython==7.16.3
 ipython-genutils==0.2.0
 ipywidgets==7.4.2
 jedi==0.13.1
